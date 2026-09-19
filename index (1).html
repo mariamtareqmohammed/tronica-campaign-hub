@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tronica Campaign Hub</title>
+  <style>
+    :root{
+      --yellow:#f5c214;
+      --black:#151515;
+      --muted:#707070;
+      --border:#e7e7e7;
+      --card:#fff;
+      --soft:#f7f7f5;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:#171717;background:#fff;
+    }
+    .wrap{max-width:1120px;margin:auto;padding:28px 20px 50px}
+    .hero{
+      border-radius:28px;padding:42px;color:#fff;position:relative;overflow:hidden;
+      background:linear-gradient(135deg,#111 0%,#242424 62%,#111 100%);
+    }
+    .hero:after{
+      content:"";position:absolute;width:330px;height:330px;border-radius:50%;
+      background:rgba(245,194,20,.12);right:-100px;top:-130px;
+    }
+    .eyebrow{font-size:12px;letter-spacing:.2em;text-transform:uppercase;opacity:.65;margin-bottom:12px}
+    h1{font-size:clamp(36px,6vw,68px);line-height:.98;margin:0 0 14px;font-weight:900;max-width:750px}
+    .accent{color:var(--yellow)}
+    .sub{max-width:720px;color:#d2d2d2;line-height:1.65;margin:0 0 26px}
+    .timer{display:grid;grid-template-columns:repeat(4,minmax(0,130px));gap:10px}
+    .timebox{
+      background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.13);
+      border-radius:17px;padding:16px;text-align:center
+    }
+    .num{font-size:clamp(30px,5vw,46px);font-weight:900;line-height:1}
+    .label{font-size:10px;color:#aaa;margin-top:7px;letter-spacing:.13em;text-transform:uppercase}
+    .date{margin-top:17px;color:#aaa;font-size:13px}
+    section{margin-top:28px}
+    .section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:15px}
+    h2{font-size:26px;margin:0;font-weight:900}
+    .muted{font-size:13px;color:var(--muted);margin-top:5px}
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+    .card{
+      background:var(--card);border:1px solid var(--border);border-radius:21px;
+      padding:20px;cursor:pointer;transition:.18s ease;
+    }
+    .card:hover{transform:translateY(-2px);border-color:#bbb}
+    .tag{
+      display:inline-flex;border-radius:999px;background:#f4f1e6;color:#685400;
+      padding:6px 9px;font-size:10px;font-weight:850;margin-bottom:12px
+    }
+    .card h3{margin:0 0 8px;font-size:20px}
+    .card p{margin:0;color:#686868;line-height:1.6;font-size:13px}
+    .details{display:none;margin-top:14px;padding-top:14px;border-top:1px solid #eee;font-size:13px;line-height:1.7}
+    .card.open .details{display:block}
+    .pillrow{display:flex;flex-wrap:wrap;gap:7px;margin-top:11px}
+    .pill{border:1px solid var(--border);border-radius:999px;padding:5px 9px;font-size:10px}
+    .cta{
+      margin-top:28px;border-radius:22px;padding:23px;background:var(--yellow);
+      display:flex;justify-content:space-between;gap:18px;align-items:center;flex-wrap:wrap
+    }
+    .cta h3{margin:0;font-size:23px}.cta p{margin:5px 0 0;font-size:13px}
+    .cta a{
+      display:inline-block;border:0;background:#171717;color:#fff;border-radius:12px;padding:12px 17px;
+      font-weight:850;cursor:pointer;text-decoration:none
+    }
+    @media(max-width:650px){
+      .wrap{padding:18px 14px 35px}.hero{padding:28px 22px;border-radius:22px}
+      .timer{grid-template-columns:repeat(2,1fr)}
+      .grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+<main class="wrap">
+  <div class="hero">
+    <div class="eyebrow">Tronica • October Campaign</div>
+    <h1>Something <span class="accent">Smarter</span> Is Coming.</h1>
+    <p class="sub">الموقع الرسمي للحملة: العد التنازلي لحد 6 أكتوبر، ومعاه أرشيف شغل Tronica اللي اتبنى عليه الـcampaign.</p>
+
+    <div class="timer" aria-live="polite">
+      <div class="timebox"><div class="num" id="days">--</div><div class="label">Days</div></div>
+      <div class="timebox"><div class="num" id="hours">--</div><div class="label">Hours</div></div>
+      <div class="timebox"><div class="num" id="minutes">--</div><div class="label">Minutes</div></div>
+      <div class="timebox"><div class="num" id="seconds">--</div><div class="label">Seconds</div></div>
+    </div>
+    <div class="date">Launch target: 6 October 2026 • 12:00 AM</div>
+  </div>
+
+  <section id="projects">
+    <div class="section-head">
+      <div>
+        <h2>All Tronica Works</h2>
+        <div class="muted">كل الأعمال والمشروعات الموثقة من Tronica.</div>
+      </div>
+    </div>
+
+    <div class="grid" id="cards">
+      <article class="card" data-cat="projects software" tabindex="0">
+        <span class="tag">Software + IT</span>
+        <h3>Asyut Road Toll Gates</h3>
+        <p>حل متكامل للـtoll gates يشمل software للتحكم، database server، domain controller وبرامج إدارة وتحليل البيانات.</p>
+        <div class="details"><b>Tronica worked on:</b> advertising screens • software control board • database/server setup • collectors' computers • gate management & analytics.</div>
+      </article>
+
+      <article class="card" data-cat="projects security">
+        <span class="tag">Security + Infrastructure</span>
+        <h3>Salt Cave — Engineering Authority House</h3>
+        <p>تنفيذ أنظمة fire alarm وsecurity مع سحب الكابلات وتجهيز passive network.</p>
+        <div class="details"><b>Scope:</b> fire alarm • security systems • passive network • network cabling.</div>
+      </article>
+
+      <article class="card" data-cat="projects software">
+        <span class="tag">Application</span>
+        <h3>Al-Fattah Al-Alim Mosque</h3>
+        <p>تطوير تطبيق للتحكم في شاشات العرض داخل قاعات الفعاليات.</p>
+        <div class="details"><b>Project type:</b> custom application controlling displays across event halls.</div>
+      </article>
+
+      <article class="card" data-cat="projects software">
+        <span class="tag">Application</span>
+        <h3>Acworth Travel Plaza</h3>
+        <p>تطبيق للتحكم في شاشات العرض داخل Acworth Travel Plaza.</p>
+        <div class="details"><b>Project type:</b> display-control application.</div>
+      </article>
+
+      <article class="card" data-cat="projects security">
+        <span class="tag">Smart Security</span>
+        <h3>Remal El Rayan Glamp</h3>
+        <p>توريد وتركيب smart locks للمشروع.</p>
+        <div class="details"><b>Scope:</b> smart lock supply and installation.</div>
+      </article>
+
+      <article class="card" data-cat="projects security">
+        <span class="tag">Smart Security</span>
+        <h3>Eterna Healthcare</h3>
+        <p>توريد وتركيب smart locks لـ Eterna Healthcare.</p>
+        <div class="details"><b>Scope:</b> smart lock supply and installation.</div>
+      </article>
+
+      <article class="card" data-cat="projects software">
+        <span class="tag">Medical Application</span>
+        <h3>Advance Medical Application</h3>
+        <p>تطبيق لإدارة ومتابعة فعاليات الشركة، مع schedule وprograms وtopics وnews وpictures وQ&amp;A.</p>
+        <div class="details"><b>Project type:</b> event management and communication application.</div>
+      </article>
+
+      <article class="card" data-cat="projects infrastructure">
+        <span class="tag">Integration</span>
+        <h3>4D Group — Beyond the Box</h3>
+        <p>تنفيذ Light Current وNetwork وIT Infrastructure وData Center وCamera System وSmart System.</p>
+        <div class="details"><b>Scope:</b> light current • network • IT infrastructure • data center • cameras • smart systems.</div>
+      </article>
+
+      <article class="card" data-cat="projects infrastructure">
+        <span class="tag">Work in Progress</span>
+        <h3>Asyut Road Toll Gates — Ongoing Work</h3>
+        <p>مشروع يشمل Light Current وSoftware Development وNetwork وInformation Technology.</p>
+        <div class="details"><b>Status:</b> Work in progress as documented in Tronica's project materials.</div>
+      </article>
+    </div>
+  </section>
+
+  <div class="cta">
+    <div><h3>Tronica — Technology for a Safer Tomorrow.</h3><p>استكشف المشروعات والحلول اللي Tronica اشتغلت عليها.</p></div>
+    <a id="focusArchive" href="https://www.tronica.tech/" target="_blank" rel="noopener noreferrer">Explore the projects</a>
+  </div>
+</main>
+
+<script>
+(function(){
+  const target = new Date("2026-10-06T00:00:00+03:00").getTime();
+  const $ = id => document.getElementById(id);
+
+  function tick(){
+    const diff = Math.max(0, target - Date.now());
+    const total = Math.floor(diff / 1000);
+    $("days").textContent = String(Math.floor(total / 86400)).padStart(2,"0");
+    $("hours").textContent = String(Math.floor((total % 86400) / 3600)).padStart(2,"0");
+    $("minutes").textContent = String(Math.floor((total % 3600) / 60)).padStart(2,"0");
+    $("seconds").textContent = String(total % 60).padStart(2,"0");
+  }
+  tick();
+  setInterval(tick,1000);
+
+  document.querySelectorAll(".card").forEach(card=>{
+    card.addEventListener("click",()=>card.classList.toggle("open"));
+    card.addEventListener("keydown",e=>{
+      if(e.key==="Enter" || e.key===" "){e.preventDefault();card.classList.toggle("open")}
+    });
+  });
+
+})();
+</script>
+</body>
+</html>
